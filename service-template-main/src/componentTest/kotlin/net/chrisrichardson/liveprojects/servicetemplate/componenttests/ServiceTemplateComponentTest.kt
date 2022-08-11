@@ -1,10 +1,13 @@
 package net.chrisrichardson.liveprojects.servicetemplate.componenttests
 
+import io.restassured.RestAssured
 import io.restassured.RestAssured.get
 import io.restassured.RestAssured.given
 import io.restassured.http.ContentType
 import org.hamcrest.CoreMatchers.not
 import org.hamcrest.CoreMatchers.nullValue
+import org.hamcrest.Matchers
+import org.hamcrest.Matchers.*
 import org.junit.jupiter.api.Test
 import org.testcontainers.containers.DockerComposeContainer
 import org.testcontainers.containers.wait.strategy.Wait
@@ -84,5 +87,19 @@ class ServiceTemplateComponentTest {
     fun shouldHaveHealthCheckEndpoint() {
         get(serviceContainer.hostUrl("/actuator/health")).then().statusCode(200)
     }
+
+    @Test
+    fun theSwaggerUIShouldBeAccessible() {
+        listOf("/swagger-ui/index.html")
+                .forEach { get(serviceContainer.hostUrl(it)).then().statusCode(200) }
+
+        get(serviceContainer.hostUrl("/v3/api-docs"))
+          .then()
+          .statusCode(200)
+          .body("paths", notNullValue())
+          .body("paths.size()", greaterThan(0))
+
+    }
+
 
 }

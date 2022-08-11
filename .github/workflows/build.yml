@@ -23,10 +23,8 @@ jobs:
     - name: Build
       run: |
         # grr... testcontainers.reuse.enable=true needs to be in home dir
-        cp service-template-test-containers/src/main/resources/dot.testcontainers.properties ~/.testcontainers.properties
+        cp dot.testcontainers.properties ~/.testcontainers.properties
         ./gradlew compileAll
-        export DOCKER_HOST_IP=$(hostname -I | sed -e 's/ .*//g')
-        echo DOCKER_HOST_IP=$DOCKER_HOST_IP
         ./gradlew build
         .github/workflows/verify-todos.py
         docker build ./service-template-main -t service-template -f ./service-template-main/Dockerfile

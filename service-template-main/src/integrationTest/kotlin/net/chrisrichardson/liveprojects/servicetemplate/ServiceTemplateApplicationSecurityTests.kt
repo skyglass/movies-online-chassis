@@ -1,8 +1,8 @@
 package net.chrisrichardson.liveprojects.servicetemplate
 
 import io.restassured.RestAssured
-import net.chrisrichardson.liveprojects.servicetemplate.security.keycloak.JwtProvider
-import net.chrisrichardson.liveprojects.servicetemplate.security.keycloak.RestAssuredUtils
+import net.chrisrichardson.liveprojects.servicechassis.security.keycloak.JwtProvider
+import net.chrisrichardson.liveprojects.servicechassis.security.keycloak.RestAssuredUtils
 import net.chrisrichardson.liveprojects.servicetemplate.web.CreateAccountRequest
 import org.hamcrest.CoreMatchers.describedAs
 import org.hamcrest.Matchers.oneOf

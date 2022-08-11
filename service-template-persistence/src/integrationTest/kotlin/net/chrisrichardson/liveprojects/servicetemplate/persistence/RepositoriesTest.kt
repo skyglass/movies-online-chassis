@@ -1,7 +1,7 @@
 package net.chrisrichardson.liveprojects.servicetemplate.persistence
 
-import net.chrisrichardson.liveprojects.servicetemplate.testcontainers.DefaultPropertyProvidingContainer
-import net.chrisrichardson.liveprojects.servicetemplate.testcontainers.MySqlContainer
+import net.chrisrichardson.liveprojects.servicechassis.testcontainers.DefaultPropertyProvidingContainer
+import net.chrisrichardson.liveprojects.servicechassis.testcontainers.MySqlContainer
 import net.chrisrichardson.liveprojects.servicetemplate.domain.Account
 import net.chrisrichardson.liveprojects.servicetemplate.domain.AccountRepository
 import org.assertj.core.api.Assertions.assertThat
@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Import
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
-import org.springframework.test.context.TestPropertySource
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.transaction.support.TransactionTemplate

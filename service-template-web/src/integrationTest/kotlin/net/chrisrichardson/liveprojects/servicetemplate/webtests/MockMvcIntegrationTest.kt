@@ -7,7 +7,7 @@ import net.chrisrichardson.liveprojects.servicetemplate.domain.Account
 import net.chrisrichardson.liveprojects.servicetemplate.domain.AccountService
 import net.chrisrichardson.liveprojects.servicetemplate.domain.AccountServiceCommandResult
 import net.chrisrichardson.liveprojects.servicetemplate.domain.TestData.initialBalance
-import net.chrisrichardson.liveprojects.servicetemplate.util.UtilConfiguration
+import net.chrisrichardson.liveprojects.servicechassis.util.UtilConfiguration
 import net.chrisrichardson.liveprojects.servicetemplate.web.AccountController
 import net.chrisrichardson.liveprojects.servicetemplate.web.CreateAccountRequest
 import org.assertj.core.api.Assertions.assertThat

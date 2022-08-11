@@ -44,7 +44,7 @@ services:
 
   service-template:
       build: ./service-template-main
-      image: ghcr.io/skyglass/service-template
+      image: service-template
       ports:
         - 8080:8080
       depends_on:

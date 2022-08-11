@@ -8,26 +8,23 @@ apply<RestAssuredTestDependenciesPlugin>()
 
 dependencies {
 
-    implementation(project(":service-template-util"))
+    implementation(project(":service-chassis-domain-security"))
+    implementation(project(":service-chassis-util"))
     implementation(project(":service-template-domain"))
 
-    implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+    implementation(project(":service-chassis-web-security"))
 
-    testImplementation("org.testcontainers:testcontainers:$testContainersVersion")
+    testImplementation("org.testcontainers:testcontainers")
 
     testImplementation(project(":service-template-web"))
-    testImplementation(project(":service-template-health-check"))
+    testImplementation(project(":service-chassis-health-check"))
     testImplementation(project(":service-template-metrics"))
 
     testImplementation(project(":service-template-config"))
     testImplementation(project(":service-template-test-data"))
-    testImplementation(project(":service-template-test-containers"))
-    testImplementation(project(":service-template-test-keycloak"))
-    testImplementation(project(":service-template-test-util"))
-
-    testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0") {
-
-    }
+    testImplementation(project(":service-chassis-test-containers"))
+    testImplementation(project(":service-chassis-test-keycloak"))
+    testImplementation(project(":service-chassis-test-util"))
 
 }
 

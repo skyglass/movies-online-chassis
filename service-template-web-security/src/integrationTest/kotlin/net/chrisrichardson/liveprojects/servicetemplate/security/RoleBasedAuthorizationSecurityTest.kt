@@ -1,7 +1,7 @@
 package net.chrisrichardson.liveprojects.servicetemplate.security
 
-import net.chrisrichardson.liveprojects.servicetemplate.security.keycloak.JwtProvider
-import net.chrisrichardson.liveprojects.servicetemplate.security.keycloak.RestAssuredUtils.givenJwt
+import net.chrisrichardson.liveprojects.servicechassis.security.keycloak.JwtProvider
+import net.chrisrichardson.liveprojects.servicechassis.security.keycloak.RestAssuredUtils.givenJwt
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.verifyNoInteractions
 import org.springframework.beans.factory.annotation.Autowired

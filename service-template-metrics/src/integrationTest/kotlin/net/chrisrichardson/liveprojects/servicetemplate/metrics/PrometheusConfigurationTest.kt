@@ -1,7 +1,7 @@
 package net.chrisrichardson.liveprojects.servicetemplate.metrics
 
 import io.restassured.RestAssured.get
-import net.chrisrichardson.liveprojects.servicetemplate.util.Eventually.eventually
+import net.chrisrichardson.liveprojects.servicechassis.util.Eventually.eventually
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.testcontainers.containers.DockerComposeContainer

@@ -1,8 +1,8 @@
 package net.chrisrichardson.liveprojects.servicetemplate
 
-import net.chrisrichardson.liveprojects.servicetemplate.security.keycloak.JwtProvider
-import net.chrisrichardson.liveprojects.servicetemplate.util.Eventually
-import net.chrisrichardson.liveprojects.servicetemplate.util.Eventually.eventually
+import net.chrisrichardson.liveprojects.servicechassis.security.keycloak.JwtProvider
+import net.chrisrichardson.liveprojects.servicechassis.util.Eventually
+import net.chrisrichardson.liveprojects.servicechassis.util.Eventually.eventually
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.RegisterExtension

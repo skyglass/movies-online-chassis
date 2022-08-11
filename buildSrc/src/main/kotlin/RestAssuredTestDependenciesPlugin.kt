@@ -12,17 +12,17 @@ abstract class AbstractRestAssuredDependenciesPlugin {
             project.dependencies.add(configurationName, artifact)
         }
 
-        add("io.rest-assured:rest-assured:$restAssuredVersion")
-        add("io.rest-assured:json-path:$restAssuredVersion")
-        add("io.rest-assured:spring-mock-mvc:$restAssuredVersion")
+        add("io.rest-assured:rest-assured")
+        add("io.rest-assured:json-path")
+        add("io.rest-assured:spring-mock-mvc")
 
         // The following are needed to fix some dependency issues
 
-        add("io.rest-assured:xml-path:$restAssuredVersion")
-        add("io.rest-assured:json-schema-validator:$restAssuredVersion")
+        add("io.rest-assured:xml-path")
+        add("io.rest-assured:json-schema-validator")
 
-        add("org.codehaus.groovy:groovy:3.0.7")
-        add("org.codehaus.groovy:groovy-xml:3.0.7")
+        add("org.codehaus.groovy:groovy")
+        add("org.codehaus.groovy:groovy-xml")
 
     }
 }

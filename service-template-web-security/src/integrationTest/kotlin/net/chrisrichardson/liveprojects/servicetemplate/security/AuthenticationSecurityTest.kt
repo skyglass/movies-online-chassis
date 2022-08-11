@@ -1,8 +1,8 @@
 package net.chrisrichardson.liveprojects.servicetemplate.security
 
 import io.restassured.RestAssured.given
-import net.chrisrichardson.liveprojects.servicetemplate.security.keycloak.JwtProvider
-import net.chrisrichardson.liveprojects.servicetemplate.security.keycloak.RestAssuredUtils.givenJwt
+import net.chrisrichardson.liveprojects.servicechassis.security.keycloak.JwtProvider
+import net.chrisrichardson.liveprojects.servicechassis.security.keycloak.RestAssuredUtils.givenJwt
 import net.chrisrichardson.liveprojects.servicetemplate.web.CreateAccountRequest
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.*

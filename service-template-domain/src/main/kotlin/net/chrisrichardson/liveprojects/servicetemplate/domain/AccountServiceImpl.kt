@@ -1,10 +1,10 @@
 package net.chrisrichardson.liveprojects.servicetemplate.domain
 
+import net.chrisrichardson.liveprojects.servicechassis.domain.security.AuthenticatedUserSupplier
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.util.*
-import java.util.function.Supplier
 
 interface AccountService {
     fun createAccount(initialBalance: Long): AccountServiceCommandResult
@@ -90,7 +90,7 @@ class AccountServiceImpl @Autowired constructor(val accountRepository: AccountRe
                     AccountServiceCommandResult.Unexpected(outcome)
             }
         }.orElseGet { ->
-            accountServiceObserver?.noteFailedCredit()
+            accountServiceObserver?.noteUnauthorizedAccountAccess()
             AccountServiceCommandResult.AccountNotFound
         }
     }
@@ -104,9 +104,10 @@ class AccountServiceImpl @Autowired constructor(val accountRepository: AccountRe
     private fun withAuthorizedAccess(id: Long, function: (account: Account) -> AccountServiceCommandResult)
             : Optional<AccountServiceCommandResult> {
         return accountRepository.findById(id).map { account ->
-            if (account.owner != currentUserId())
+            if (account.owner != currentUserId()) {
+                accountServiceObserver?.noteUnauthorizedAccountAccess()
                 AccountServiceCommandResult.Unauthorized
-            else
+            } else
                 function(account)
         }
     }
@@ -132,14 +133,3 @@ sealed class AccountServiceCommandResult {
     object Unauthorized : AccountServiceCommandResult()
 
 }
-
-
-interface AuthenticatedUserSupplier : Supplier<AuthenticatedUser> {
-    object EMPTY_SUPPLIER : AuthenticatedUserSupplier {
-        override fun get() = AuthenticatedUser("nullId", emptySet())
-
-    }
-}
-
-data class AuthenticatedUser(val id: String, val roles: Set<String>)
-

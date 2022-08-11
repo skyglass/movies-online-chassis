@@ -1,19 +1,16 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 apply<IntegrationTestsPlugin>()
 apply<RestAssuredTestDependenciesPlugin>()
 
 dependencies {
 
-    implementation(project(":service-template-util"))
+    implementation(project(":service-chassis-util"))
     implementation(project(":service-template-domain"))
 
-    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation(project(":service-chassis-web"))
+
 
     testImplementation(project(":service-template-test-data"))
-    testImplementation(project(":service-template-test-containers"))
-
-    testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
+    testImplementation(project(":service-chassis-test-containers"))
 
 }
 

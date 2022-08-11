@@ -82,6 +82,11 @@ allprojects {
 
 subprojects {
 
+    if (name.endsWith("-bom")) {
+        apply(plugin = "java-platform")
+        return@subprojects
+    }
+
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions {
             freeCompilerArgs = listOf("-Xjsr305=strict")
@@ -116,11 +121,6 @@ subprojects {
 
 
     dependencies {
-
-        implementation(platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
-
-        // :
-
         constraints {
             implementation("com.google.guava:guava") {
                 version {
@@ -130,10 +130,14 @@ subprojects {
             }
         }
 
-        implementation("org.jetbrains.kotlin:kotlin-reflect:1.4.20")
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.20")
+        implementation(platform(project(":service-chassis-dependencies-bom")))
+
+        implementation("org.jetbrains.kotlin:kotlin-reflect")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
         testImplementation("org.springframework.boot:spring-boot-starter-test")
+        testImplementation("org.mockito.kotlin:mockito-kotlin")
+
     }
 
 }
@@ -155,7 +159,7 @@ val liveProject : String by project
 
 val todoModules =
         mapOf(
-                "series-01-live-project-01-configuring-observability" to listOf("service-template-health-check", "service-template-distributed-tracing", "service-template-metrics")
+                "series-01-live-project-01-configuring-observability" to listOf("service-chassis-health-check", "service-chassis-distributed-tracing", "service-template-metrics")
                 ,"series-01-live-project-02-implementing-security" to listOf("service-template-web-security", "service-template-main")
         )
 

@@ -1,17 +1,16 @@
 package net.chrisrichardson.liveprojects.servicetemplate.security
 
-import io.restassured.RestAssured
-import org.mockito.kotlin.whenever
+import net.chrisrichardson.liveprojects.servicechassis.security.keycloak.JwtProvider
+import net.chrisrichardson.liveprojects.servicechassis.security.keycloak.RestAssuredUtils.givenJwt
+import net.chrisrichardson.liveprojects.servicechassis.security.keycloak.TestUserCredentials
 import net.chrisrichardson.liveprojects.servicetemplate.domain.Account
-import net.chrisrichardson.liveprojects.servicetemplate.security.keycloak.JwtProvider
-import net.chrisrichardson.liveprojects.servicetemplate.security.keycloak.RestAssuredUtils.givenJwt
-import net.chrisrichardson.liveprojects.servicetemplate.security.keycloak.TestUserCredentials
 import net.chrisrichardson.liveprojects.servicetemplate.web.AmountRequest
 import net.chrisrichardson.liveprojects.servicetemplate.web.CreateAccountRequest
 import org.hamcrest.Matchers.equalTo
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.*
 import org.mockito.invocation.InvocationOnMock
+import org.mockito.kotlin.whenever
 import org.mockito.stubbing.Answer
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.actuate.metrics.AutoConfigureMetrics

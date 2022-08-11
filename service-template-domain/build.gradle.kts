@@ -10,16 +10,12 @@ allOpen {
 
 dependencies {
 
-    api(platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES))
+    implementation(project(":service-chassis-domain-security"))
 
     api("org.springframework.data:spring-data-commons")
     compileOnly("org.springframework.boot:spring-boot-starter-data-jpa")
 
     testImplementation(project(":service-template-test-data"))
-
-    testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
-
-
 
 }
 

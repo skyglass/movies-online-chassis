@@ -1,10 +1,9 @@
 package net.chrisrichardson.liveprojects.servicetemplate.security
 
+import net.chrisrichardson.liveprojects.servicechassis.testcontainers.DefaultPropertyProvidingContainer
+import net.chrisrichardson.liveprojects.servicechassis.testcontainers.KeyCloakContainer
 import net.chrisrichardson.liveprojects.servicetemplate.domain.AccountRepository
 import net.chrisrichardson.liveprojects.servicetemplate.domain.AccountServiceObserver
-import net.chrisrichardson.liveprojects.servicetemplate.security.keycloak.JwtProvider
-import net.chrisrichardson.liveprojects.servicetemplate.testcontainers.DefaultPropertyProvidingContainer
-import net.chrisrichardson.liveprojects.servicetemplate.testcontainers.KeyCloakContainer
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.test.context.DynamicPropertyRegistry
