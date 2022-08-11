@@ -34,6 +34,14 @@ jobs:
         ./gradlew build
         docker build ./main -t service-template -f ./main/Dockerfile
 
+
+    - name: Publish chassis
+      run: |
+        cd service-chassis
+        export MAVEN_REPO_USERNAME=${GITHUB_REPOSITORY%%/*}
+        export MAVEN_REPO_PASSWORD="${{ secrets.GITHUB_TOKEN }}"
+        ./gradlew publish -P chassisRepo=https://maven.pkg.github.com/${GITHUB_REPOSITORY?}
+
     - name: Publish image
       run: |
         echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u cer --password-stdin

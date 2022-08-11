@@ -18,7 +18,12 @@ include("main")
 pluginManagement {
     repositories {
         maven {
-             url = uri(File(rootDir, "../build/repository"))
+          url = uri(System.getenv("MAVEN_REPO_URL") ?: File(rootDir, "../build/repository"))
+          if (System.getenv("MAVEN_REPO_USERNAME") != null)
+            credentials {
+                username = System.getenv("MAVEN_REPO_USERNAME")
+                password = System.getenv("MAVEN_REPO_PASSWORD")
+            }
         }
     }
 }

@@ -34,3 +34,13 @@ gradlePlugin {
 
     }
 }
+
+val createPropsFileTask = tasks.register<CreateServicePluginPropertiesFileTask>("createServicePluginPropertiesFile") {
+    pluginVersion  = project.version as String
+    chassisRepo = if (project.hasProperty("chassisRepo")) project.property("chassisRepo") as String else "local"
+}
+
+val processResourcesTask : Copy = tasks.findByPath("processResources") as Copy
+
+processResourcesTask.from(files(createPropsFileTask))
+

@@ -41,8 +41,6 @@ class ServiceMainModulePlugin implements Plugin<Project> {
 
             implementation("org.springdoc:springdoc-openapi-ui")
 
-            runtimeOnly("javax.xml.bind:jaxb-api:2.3.0")
-
             testImplementation("net.chrisrichardson.liveprojects.servicechassis:service-chassis-test-util")
             testImplementation("net.chrisrichardson.liveprojects.servicechassis:service-chassis-test-containers")
             testImplementation("net.chrisrichardson.liveprojects.servicechassis:service-chassis-test-keycloak")

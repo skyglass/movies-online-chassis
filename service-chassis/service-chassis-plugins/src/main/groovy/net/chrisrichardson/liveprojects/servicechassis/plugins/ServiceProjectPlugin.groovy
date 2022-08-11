@@ -10,6 +10,16 @@ import org.gradle.jvm.toolchain.JavaLanguageVersion
 class ServiceProjectPlugin implements Plugin<Project> {
     void apply(Project rootProject) {
 
+        def props = new Properties()
+        props.load(getClass().getResourceAsStream("/service.plugin.properties"))
+
+        def thisVersion = props.getProperty("version")
+
+        def thisChassisRepo = props.getProperty("chassisRepo")
+
+        if (thisChassisRepo == "local")
+          thisChassisRepo = new File(rootProject.rootDir, "../build/repository")
+
         rootProject.apply plugin: "docker-compose"
 
         rootProject.dockerCompose {
@@ -55,7 +65,12 @@ class ServiceProjectPlugin implements Plugin<Project> {
             project.repositories {
                 mavenCentral()
                 maven {
-                  url uri(new File(rootDir, "../build/repository"))
+                  url = uri(thisChassisRepo)
+                  if (System.getenv("MAVEN_REPO_USERNAME") != null)
+                    credentials {
+                        username = System.getenv("MAVEN_REPO_USERNAME")
+                        password = System.getenv("MAVEN_REPO_PASSWORD")
+                    }
                 }
             }
 
@@ -78,7 +93,7 @@ class ServiceProjectPlugin implements Plugin<Project> {
                     }
                 }
 
-                implementation(platform("net.chrisrichardson.liveprojects.servicechassis:service-chassis-bom:0.0.1-SNAPSHOT"))
+                implementation(platform("net.chrisrichardson.liveprojects.servicechassis:service-chassis-bom:$thisVersion"))
 
                 implementation("org.jetbrains.kotlin:kotlin-reflect")
                 implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")

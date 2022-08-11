@@ -104,7 +104,12 @@ subprojects {
         repositories {
             maven {
                 name = "myRepo"
-                url = uri(File(rootDir, "../build/repository"))
+                url = uri(if (project.hasProperty("chassisRepo")) project.property("chassisRepo") as String else File(rootDir, "../build/repository"))
+                if (System.getenv("MAVEN_REPO_USERNAME") != null)
+                  credentials {
+                      username = System.getenv("MAVEN_REPO_USERNAME")
+                      password = System.getenv("MAVEN_REPO_PASSWORD")
+                  }
             }
 
         }
