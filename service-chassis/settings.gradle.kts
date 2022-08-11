@@ -20,3 +20,5 @@ include("service-chassis-metrics")
 include("service-chassis-distributed-tracing")
 
 include("service-chassis-bom")
+
+include("service-chassis-plugins")

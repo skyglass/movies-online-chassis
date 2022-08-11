@@ -14,8 +14,8 @@ dependencies {
 
 
         api("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
-        api("org.jetbrains.kotlin:kotlin-reflect:1.4.20")
-        api("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.20")
+        api("org.jetbrains.kotlin:kotlin-reflect:1.6.10")
+        api("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10")
 
         runtime("mysql:mysql-connector-java:8.0.21")
 
@@ -34,7 +34,7 @@ dependencies {
 
         api("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.3")
 
-        api("org.mockito.kotlin:mockito-kotlin:4.0.0")
+        api("org.mockito.kotlin:mockito-kotlin:3.2.0")
 
         api("io.rest-assured:rest-assured:$restAssuredVersion")
         api("io.rest-assured:json-path:$restAssuredVersion")

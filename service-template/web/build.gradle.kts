@@ -1,17 +1,3 @@
-apply<IntegrationTestsPlugin>()
-apply<RestAssuredTestDependenciesPlugin>()
-
-dependencies {
-
-    implementation("net.chrisrichardson.liveprojects.servicechassis:service-chassis-util")
-    implementation(project(":domain"))
-
-    implementation("net.chrisrichardson.liveprojects.servicechassis:service-chassis-web")
-
-
-    testImplementation(project(":test-data"))
-    testImplementation("net.chrisrichardson.liveprojects.servicechassis:service-chassis-test-containers")
-
+plugins {
+    id("net.chrisrichardson.liveprojects.servicechassis.plugins.ServiceWebModulePlugin")
 }
-
-tasks.findByName("check")!!.shouldRunAfter(":domain:check")

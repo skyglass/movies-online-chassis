@@ -1,3 +1,5 @@
+package net.chrisrichardson.liveprojects.servicechassis.plugins
+
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 

@@ -1,6 +1,6 @@
 buildscript {
     extra.apply {
-        set("kotlin_version", "1.4.20")
+        set("kotlin_version", "1.6.10")
     }
 
     repositories {
@@ -41,6 +41,8 @@ subprojects {
     if (name.endsWith("-bom")) {
         apply(plugin = "java-platform")
         return@subprojects
+    } else if (name.endsWith("-plugins")) {
+       return@subprojects
     }
 
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
@@ -80,7 +82,6 @@ subprojects {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
         testImplementation("org.springframework.boot:spring-boot-starter-test")
-        testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
     }
 
 }
@@ -90,14 +91,15 @@ subprojects {
 
     configure<PublishingExtension> {
 
-        publications {
-            create<MavenPublication>("myLibrary") {
-                if (project.name.endsWith("-bom"))
-                    from(components["javaPlatform"])
-                else
-                    from(components["java"])
-            }
-        }
+        if (!name.endsWith("-plugins"))
+          publications {
+              create<MavenPublication>("myLibrary") {
+                  if (project.name.endsWith("-bom"))
+                      from(components["javaPlatform"])
+                  else
+                      from(components["java"])
+              }
+          }
 
         repositories {
             maven {

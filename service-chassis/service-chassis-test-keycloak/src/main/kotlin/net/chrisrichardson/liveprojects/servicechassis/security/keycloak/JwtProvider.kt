@@ -83,13 +83,11 @@ class JwtProvider @Autowired constructor(
     }
 
     /*
-
-
     curl -X POST \
            -d "grant_type=password&username=foo&password=foopassword&client_id=service-template" \
            http://localhost:8091/auth/realms/service-template/protocol/openid-connect/token
+    */
 
-     */
     private fun fetchJwt(clientId: String, userName: String, password: String): String {
         var ra = RestAssured.given()
         if (httpProxy != null) {

@@ -14,3 +14,11 @@ include("metrics")
 include("service-chassis-distributed-tracing-tests")
 
 include("main")
+
+pluginManagement {
+    repositories {
+        maven {
+             url = uri(File(rootDir, "../build/repository"))
+        }
+    }
+}

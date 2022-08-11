@@ -1,9 +1,7 @@
 plugins {
-    id("TestReporter")
+    id("net.chrisrichardson.liveprojects.servicechassis.plugins.IntegrationTestsPlugin")
+    id("net.chrisrichardson.liveprojects.servicechassis.plugins.RestAssuredTestDependenciesPlugin")
 }
-
-apply<IntegrationTestsPlugin>()
-apply<RestAssuredTestDependenciesPlugin>()
 
 dependencies {
 
