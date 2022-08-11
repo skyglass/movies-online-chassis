@@ -20,14 +20,19 @@ jobs:
         java-package: jdk # (jre, jdk, or jdk+fx) - defaults to jdk
         architecture: x64 # (x64 or x86) - defaults to x64
 
-    - name: Build
+    - name: Build and publish chassis
+      run: |
+        cd service-chassis
+        ./gradlew build
+        ./gradlew publish
+
+    - name: Build service template
       run: |
         # grr... testcontainers.reuse.enable=true needs to be in home dir
         cp dot.testcontainers.properties ~/.testcontainers.properties
-        ./gradlew compileAll
+        cd service-template
         ./gradlew build
-        .github/workflows/verify-todos.py
-        docker build ./service-template-main -t service-template -f ./service-template-main/Dockerfile
+        docker build ./main -t service-template -f ./main/Dockerfile
 
     - name: Publish image
       run: |
@@ -41,7 +46,7 @@ jobs:
       with:
         name: test-reports
         path: |
-          ./build/reports
+          **/build/reports
           **/build/reports/tests/
           **/build/test-results
 
