@@ -23,10 +23,11 @@ jobs:
     - name: Build
       run: |
         # grr... testcontainers.reuse.enable=true needs to be in home dir
-        cp dot.testcontainers.properties ~/.testcontainers.properties
+        cp ./dot.testcontainers.properties ~/.testcontainers.properties
         export MAVEN_REPO_USERNAME=${GITHUB_REPOSITORY%%/*}
         export MAVEN_REPO_PASSWORD="${{ secrets.GITHUB_TOKEN }}"
         ./gradlew build
+        docker build ./main -t service-template -f ./main/Dockerfile
 
     - name: Publish image
       run: |
