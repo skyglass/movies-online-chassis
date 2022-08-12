@@ -24,6 +24,10 @@ rm *.bak
 
 cp -r $ROOT/.gitignore $ROOT/dot.testcontainers.properties .
 
+mkdir -p .github/workflows
+
+cp $ROOT/_github_build_workflows/* ./.github/workflows
+
 #./gradlew compileAll
 
 git add .
