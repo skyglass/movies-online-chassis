@@ -31,7 +31,7 @@ jobs:
     - name: Build service template
       run: |
         # grr... testcontainers.reuse.enable=true needs to be in home dir
-        cp dot.testcontainers.properties ~/.testcontainers.properties
+        cp ./dot.testcontainers.properties ~/.testcontainers.properties
         cd service-template
         ./gradlew build
         docker build ./main -t service-template -f ./main/Dockerfile        
@@ -46,8 +46,8 @@ jobs:
 
     - name: Publish template
       run: |
-        git config --global user.email "chris@chrisrichardson.net"
-        git config --global user.name "Chris Richardson"
+        git config --global user.email "skyglass2001@gmail.com"
+        git config --global user.name "Michael Glass"
         ./publish-service-template.sh
 
     - name: Publish image
